@@ -1,0 +1,2 @@
+ZVE_before,MarginalRate_pct,Deduction,TaxSaving_approx,Saving_person,PaidByPersonA,PaidByPersonB,Transfer_T
+80000,30,4000,=C2*B2/100,=D2*0.5,2002,2002,=(F2-G2-(E2-E2))/2
