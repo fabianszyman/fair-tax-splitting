@@ -73,12 +73,12 @@ export function SplittingTable({ zve }: { zve?: number }) {
     } else if (selectedZve === null) {
       setSelectedZve(rows[Math.floor(rows.length / 2)].zve);
     }
-  }, [rows, zve]);
+  }, [rows, zve, selectedZve]);
 
   return (
     <Card>
       <CardHeader>
-        <div className="w-full flex items-start justify-between">
+        <div className="w-full flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
           <CardTitle>Splittingtabelle 2025 (Ehepaare)</CardTitle>
           <div className="text-right">
             {actualStats ? (
@@ -124,34 +124,37 @@ export function SplittingTable({ zve }: { zve?: number }) {
           </div>
         )}
 
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>zvE (Splitting)</TableHead>
-              <TableHead>ESt</TableHead>
-              <TableHead>∅‑Satz</TableHead>
-              <TableHead>Grenz‑Satz</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {rows.map((r) => (
-              <TableRow
-                key={r.zve}
-                data-state={selectedZve === r.zve ? "selected" : undefined}
-                className={
-                  selectedZve === r.zve ? "bg-primary/10 font-bold" : ""
-                }
-                onClick={() => setSelectedZve(r.zve)}
-                style={{ cursor: "pointer" }}
-              >
-                <TableCell>{r.zve.toLocaleString("de-DE")} €</TableCell>
-                <TableCell>{formatEuro(r.est)} €</TableCell>
-                <TableCell>{(r.avg * 100).toFixed(2)} %</TableCell>
-                <TableCell>{(r.marg * 100).toFixed(2)} %</TableCell>
+        <div className="w-full overflow-x-auto">
+          <Table className="md:min-w-[520px]">
+            <TableHeader>
+              <TableRow>
+                <TableHead>zvE (Splitting)</TableHead>
+                <TableHead>ESt</TableHead>
+                <TableHead>∅‑Satz</TableHead>
+                <TableHead>Grenz‑Satz</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {rows.map((r) => (
+                <TableRow
+                  key={r.zve}
+                  data-state={selectedZve === r.zve ? "selected" : undefined}
+                  className={
+                    selectedZve === r.zve ? "bg-primary/10 font-bold" : ""
+                  }
+                  onClick={() => setSelectedZve(r.zve)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <TableCell>{r.zve.toLocaleString("de-DE")} €</TableCell>
+                  <TableCell>{formatEuro(r.est)} €</TableCell>
+                  <TableCell>{(r.avg * 100).toFixed(2)} %</TableCell>
+                  <TableCell>{(r.marg * 100).toFixed(2)} %</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+
         <div className="text-xs text-muted-foreground">
           Werte nach § 32a EStG 2025 (Splittingtarif). Grenz‑Satz als lokale
           Approximation über +100 €.

@@ -46,12 +46,12 @@ export function Results({ data }: { data: ResultsData | null }) {
       <CardContent>
         {/* Top metrics */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
-          <div className="rounded-md border p-3">
+          <div className="rounded-md border p-4">
             <div className="text-xs text-muted-foreground">ZVE gesamt</div>
             <div className="text-lg font-semibold">{formatEuro(zve)} €</div>
           </div>
 
-          <div className="rounded-md border p-3">
+          <div className="rounded-md border p-4">
             <div className="text-xs text-muted-foreground">Gesamtsteuer</div>
             <div className="text-lg font-semibold">
               {formatEuro(taxTotal)} €
@@ -61,7 +61,7 @@ export function Results({ data }: { data: ResultsData | null }) {
             </div>
           </div>
 
-          <div className="rounded-md border p-3">
+          <div className="rounded-md border p-4">
             <div className="text-xs text-muted-foreground">∅‑Steuersatz</div>
             <div className="text-lg font-semibold">
               {(avgRate * 100).toFixed(2)} %

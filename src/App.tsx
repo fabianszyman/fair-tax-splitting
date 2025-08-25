@@ -340,7 +340,7 @@ function App() {
 
   return (
     <FormProvider {...methods}>
-      <div className="container py-8">
+      <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-2 md:px-4">
         <header className="mb-4 flex items-start justify-between gap-4">
           <div>
             <h1 className="text-xl font-semibold">

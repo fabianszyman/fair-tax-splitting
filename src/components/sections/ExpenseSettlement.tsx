@@ -98,11 +98,10 @@ export default function ExpenseSettlement({
                         {s.name}
                       </div>
 
-                      <div className="hidden md:block text-xs text-muted-foreground">
+                      <div className="text-xs text-muted-foreground">
                         {formatEuro(s.gross)} € • {s.vatRate}% MwSt
                       </div>
                     </div>
-
                     <div className="ml-4 font-medium">
                       {formatEuro(s.net)} €
                     </div>

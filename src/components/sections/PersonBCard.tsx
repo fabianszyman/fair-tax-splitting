@@ -83,7 +83,7 @@ export function PersonBCard() {
           </div>
         </div>
 
-        <div className="rounded-lg border p-3 text-sm">
+        <div className="rounded-md border p-4 text-sm">
           <div className="mb-2 font-medium">Berechnung ZVE‑Anteil</div>
           <div className="flex items-center justify-between">
             <span>Ausgang: Einkommen</span>

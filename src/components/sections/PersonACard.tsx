@@ -96,7 +96,7 @@ export function PersonACard() {
           </div>
         </div>
 
-        <div className="rounded-lg border p-3 text-sm">
+        <div className="rounded-md border p-4 text-sm">
           <div className="mb-2 font-medium">
             Betriebsausgaben ({PERSON_A_LABEL})
           </div>
@@ -108,47 +108,50 @@ export function PersonACard() {
               const net = vatRate >= 0 ? gross / (1 + vatRate / 100) : gross;
               const vat = gross - net;
               return (
-                <div key={f.id} className="space-y-1">
-                  <div className="flex items-center gap-2">
+                <div key={f.id} className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     <Input
-                      className="grow"
+                      className="w-full"
                       placeholder="Beschreibung"
                       {...register(`you_expenses.${idx}.name`)}
                     />
-                    <Input
-                      type="number"
-                      step={1}
-                      className="w-32"
-                      placeholder="Brutto"
-                      {...register(`you_expenses.${idx}.gross`, {
-                        valueAsNumber: true,
-                      })}
-                    />
-                    <Input
-                      type="number"
-                      step={0.1}
-                      className="w-20"
-                      placeholder="USt %"
-                      {...register(`you_expenses.${idx}.vatRate`, {
-                        valueAsNumber: true,
-                      })}
-                    />
-                    <input
-                      type="checkbox"
-                      className="ml-2"
-                      {...register(`you_expenses.${idx}.settle`)}
-                    />
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      onClick={() => remove(idx)}
-                    >
-                      Entfernen
-                    </Button>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <div className="w-64">
+                    <div className="grid grid-cols-3 gap-2 items-center">
+                      <Input
+                        type="number"
+                        step={1}
+                        className="col-span-1 w-full"
+                        placeholder="Brutto"
+                        {...register(`you_expenses.${idx}.gross`, {
+                          valueAsNumber: true,
+                        })}
+                      />
+                      <Input
+                        type="number"
+                        step={0.1}
+                        className="col-span-1 w-full"
+                        placeholder="USt %"
+                        {...register(`you_expenses.${idx}.vatRate`, {
+                          valueAsNumber: true,
+                        })}
+                      />
+                      <div className="col-span-1 flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          className=""
+                          {...register(`you_expenses.${idx}.settle`)}
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => remove(idx)}
+                        >
+                          Entfernen
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div className="text-sm text-muted-foreground">
                       Netto: {formatEuro(net)} € · USt: {formatEuro(vat)} €
                     </div>
                   </div>
@@ -171,7 +174,7 @@ export function PersonACard() {
           </div>
         </div>
 
-        <div className="rounded-lg border p-3 text-sm">
+        <div className="rounded-md border p-4 text-sm">
           <div className="mb-2 font-medium">Berechnung ZVE‑Anteil</div>
           <div className="flex items-center justify-between">
             <span>Ausgang: Gewinn (brutto)</span>
